@@ -64,12 +64,13 @@ void insertion_sort_list(listint_t **list)
 	ptr = *list;
 	while (ptr)
 	{
-		cmp = ptr->prev;
-		while (compare_two(cmp->prev, cmp))
+		cmp = ptr;
+		while(compare_two(cmp->prev, cmp))
 		{
 			swap_nodes(cmp, cmp->prev);
+			if (!cmp->prev)
+				*list = cmp;
 			print_list(*list);
-			cmp = cmp->prev;
 		}
 		ptr = ptr->next;
 	}
