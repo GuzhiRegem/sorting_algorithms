@@ -62,10 +62,15 @@ void insertion_sort_list(listint_t **list)
 	if (!list)
 		return;
 	ptr = *list;
-	cmp = ptr->next;
-	print_list(ptr);
-	swap_nodes(cmp, cmp->next->next);
-	print_list(ptr);
-	swap_nodes(cmp->next, cmp);
-	print_list(ptr);
+	while (ptr)
+	{
+		cmp = ptr->prev;
+		while (compare_two(cmp->prev, cmp))
+		{
+			swap_nodes(cmp, cmp->prev);
+			print_list(*list);
+			cmp = cmp->prev;
+		}
+		ptr = ptr->next;
+	}
 }
