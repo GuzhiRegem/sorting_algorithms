@@ -65,7 +65,7 @@ void insertion_sort_list(listint_t **list)
 	while (ptr)
 	{
 		cmp = ptr;
-		while(compare_two(cmp->prev, cmp))
+		while (compare_two(cmp->prev, cmp))
 		{
 			swap_nodes(cmp, cmp->prev);
 			if (!cmp->prev)
