@@ -8,20 +8,26 @@
  */
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j;
-	int num, num2;
+	size_t i, j, k;
+	int num, flag;
 
 	for (i = 0; i < size; i++)
 	{
+		flag = 0;
 		num = array[i];
+		k = i;
 		for (j = i; j < size; j++)
 			if (array[j] < num)
 			{
-				num2 = num;
 				num = array[j];
-				array[j] = num2;
-				array[i] = num;
+				k = j;
+				flag = 1;
 			}
-		print_array(array, size);
+		if (flag)
+		{
+			array[k] = array[i];
+			array[i] = num;
+			print_array(array, size);
+		}
 	}
 }
